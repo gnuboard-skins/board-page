@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+#view-title { background:#eeeeee; border:1px solid #cccccc; padding:10px 20px }
+
 /*
 ================================================================================
     페이지 버튼 디자인
@@ -10,7 +12,7 @@
 .page-contents-buttons .btn {
     font-size:18px;
     display:block;
-    width:150px; margin:0 5px;
+    min-width:150px; margin:0 5px;
     line-height: 3em;
     height:3em;
     background:#f9f9f9;
@@ -52,6 +54,7 @@
 ================================================================================
 */
 .page-contents { font-size:18px; line-height: 1.6; min-height: 500px }
+.page-contents p {margin:0;padding:0;word-break:break-all}
 
 
 .page-contents .full-width {
