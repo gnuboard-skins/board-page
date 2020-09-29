@@ -28,6 +28,7 @@ add_javascript("<script src='{$board_skin_url}/ckfinder/ckfinder.js'></script>",
     $(function(){
         CKEDITOR.config.height = 900;
         CKEDITOR.config.width = 'auto';
+        CKEDITOR.config.skin = 'office2013';
         CKEDITOR.config.extraPlugins = 'youtube';
         let editor_instance = CKEDITOR.replace( 'document-editor', {
             bodyId: 'page-contents',
