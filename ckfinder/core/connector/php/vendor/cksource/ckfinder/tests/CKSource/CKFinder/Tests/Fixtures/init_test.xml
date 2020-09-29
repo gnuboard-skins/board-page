@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Connector>
+    <Error number="0"></Error>
+    <ConnectorInfo
+            enabled="true"
+            s="localhost"
+            c="NNSEELIVOE"
+            thumbsEnabled="true"
+            thumbsUrl="/userfiles/_thumbs/"
+            thumbsDirectAccess="false"
+            thumbsWidth="330"
+            thumbsHeight="330"
+            imgWidth="1600"
+            imgHeight="1600"
+            uploadMaxSize="536870912"
+            uploadCheckImages="false"
+            plugins="imageeditor,imageresize,imagepreview"
+            someSpecialChars="ĄŻŚĆĘÓŁążśęćół©"></ConnectorInfo>
+    <ResourceTypes>
+        <ResourceType
+                name="Files"
+                url="/userfiles/files/"
+                allowedExtensions="webm,7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip"
+                deniedExtensions=""
+                hash="0e34a82662b18572"
+                hasChildren="false"
+                acl="255"
+                maxSize="209715200"></ResourceType>
+        <ResourceType
+                name="Images"
+                url="/userfiles/images/"
+                allowedExtensions="bmp,gif,jpeg,jpg,png"
+                deniedExtensions=""
+                hash="6a6980c2d9392463"
+                hasChildren="false"
+                acl="255"
+                maxSize="1048576"></ResourceType>
+        <ResourceType
+                name="Flash"
+                url="/userfiles/flash/"
+                allowedExtensions="swf,flv"
+                deniedExtensions=""
+                hash="72d3c5bf58715473"
+                hasChildren="false"
+                acl="255"
+                maxSize="1048576"></ResourceType>
+    </ResourceTypes>
+    <PluginsInfo>
+        <Imageresize smallThumb="90x90" mediumThumb="120x120" largeThumb="180x180"></Imageresize>
+    </PluginsInfo>
+</Connector>
