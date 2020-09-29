@@ -33,7 +33,7 @@ if($board['bo_use_category']) {
 }
 
 // ------------------------------------------------------------------
-// 마지막 글
+// 마지막으로 작성한 글
 $v = $list[0];
 
 // ------------------------------------------------------------------
@@ -56,7 +56,8 @@ if(isset($category_list)) {
         $li_list.= " <li> <a href='{$ca['href']}' class='{$ca['active']}'>{$ca['name']}</a> </li> ";
     }
     echo "<nav id='{$id}' class='scroll-fixed' data-offset-top='0'><div class='wrap'><ul>{$li_list}</ul></div></nav>";
-} ?>
+}
+?>
 
 <div class="wrap">
     <?php echo $board['bo_content_head']?>
@@ -67,7 +68,7 @@ if(isset($category_list)) {
 
     <?php if ($write_href) { ?>
         <div class="page-contents-buttons">
-            <a href="<?php echo $write_href.'&sca='.$sca?>" class="btn">
+            <a href="<?php echo $write_href?>" class="btn">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 페이지 수정
             </a>
