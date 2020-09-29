@@ -6,6 +6,7 @@
 ================================================================================
 */
 .page-contents-buttons { clear:both; display:flex; justify-content: center; padding:20px 0 }
+.page-contents-buttons.right { justify-content: flex-end }
 .page-contents-buttons .btn {
     font-size:18px;
     display:block;
@@ -17,6 +18,33 @@
 .page-contents-buttons .btn:hover {background:#dfdfdf}
 .page-contents-buttons .btn.btn-submit {color:#fff;background:#4876ef;}
 .page-contents-buttons .btn.btn-submit:hover {background:#3a8afd;}
+
+/*
+================================================================================
+    스크롤 상단고정 스타일
+================================================================================
+*/
+.scroll-fixed.fixed {
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 0;
+}
+
+.page-category {
+    position: absolute;
+    z-index: 0;
+    left: calc((100vw - 100%) / 2 - (100vw - 100%));
+    width: calc(100vw);
+    border-bottom: 1px solid #d3d5da;
+    background: rgba(255,255,255,0.9);
+}
+.page-category .wrap { width:1200px; margin:0 auto; }
+.page-category ul { display: flex; width:100%; }
+.page-category ul li { width:100%; min-width:fit-content }
+.page-category ul li a { display: block; border-bottom:2px solid rgba(0,0,0,0); width:100%; padding:8px 15px; text-align: center; font-size:20px; font-weight: 700; color:#a0a0a0; }
+.page-category ul li a.on { color:#4876f0; border-bottom:2px solid #4876f0;  }
+.page-category ul li a:hover { color:#000  }
 
 /*
 ================================================================================

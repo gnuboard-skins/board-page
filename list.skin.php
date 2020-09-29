@@ -50,28 +50,34 @@ foreach($matchs[1] as $idx=>$match) {
 // ------------------------------------------------------------------
 // 분류 출력
 if(isset($category_list)) {
-    $id = $board['bo_3']?$board['bo_3']:'category-main';
     $li_list = '';
     foreach($category_list as $ca) {
         $li_list.= " <li> <a href='{$ca['href']}' class='{$ca['active']}'>{$ca['name']}</a> </li> ";
     }
-    echo "<nav id='{$id}' class='scroll-fixed' data-offset-top='0'><div class='wrap'><ul>{$li_list}</ul></div></nav>";
+    echo "<nav class='page-category scroll-fixed full-width' data-offset-top='0'><div class='wrap'><ul>{$li_list}</ul></div></nav>";
 }
 ?>
 
-<div class="wrap">
-    <?php echo $board['bo_content_head']?>
-    <div id="page-contents" class="page-contents">
-        <?php echo $v['wr_content']?>
+<?php if ($write_href) { ?>
+    <div class="page-contents-buttons right">
+        <a href="<?php echo $write_href?>" class="btn">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            페이지 수정
+        </a>
     </div>
-    <?php echo $board['bo_content_tail']?>
+<?php } ?>
 
-    <?php if ($write_href) { ?>
-        <div class="page-contents-buttons">
-            <a href="<?php echo $write_href?>" class="btn">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                페이지 수정
-            </a>
-        </div>
-    <?php } ?>
+<?php echo $board['bo_content_head']?>
+<div id="page-contents" class="page-contents">
+    <?php echo $v['wr_content']?>
 </div>
+<?php echo $board['bo_content_tail']?>
+
+<?php if ($write_href) { ?>
+    <div class="page-contents-buttons">
+        <a href="<?php echo $write_href?>" class="btn">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            페이지 수정
+        </a>
+    </div>
+<?php } ?>
