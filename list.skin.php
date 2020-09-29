@@ -63,12 +63,41 @@ if(isset($category_list)) {
 }
 
 /**
+ * 페이지 수정기록 리스트
+ */
+$history_list = '';
+foreach($list as $idx => $article) {
+    if($idx==0) continue;
+    $history_list.= " <li> <a href='{$article['href']}'>{$article['wr_subject']}</a> </li> ";
+}
+$history_list = <<<HISTORY
+<div class="dim-layer">
+    <div class="dimBg"></div>
+    <div id="page-history" class="pop-layer">
+        <div class="pop-container">
+            <div class="pop-conts">
+                <!--content //-->
+                <h2>아래 링크를 클릭하면 해당 버전의 기록을 볼 수 있습니다.</h2>
+                <ul>{$history_list}</ul>
+
+                <div class="btn-r">
+                    <a href="#" class="btn-layerClose">닫기</a>
+                </div>
+                <!--// content-->
+            </div>
+        </div>
+    </div>
+</div>
+HISTORY;
+
+/**
  * 페이지 수정 버튼
  */
 $write_btn = '';
 if ($write_href) {
     $write_btn = <<<TAG
     <div class='page-contents-buttons right'>
+        <a href="#page-history" class="btn layer-popup"> <i class="fa fa-history" aria-hidden="true"></i> 버전관리 </a>
         <a href="{$write_href}&sca={$sca}" class="btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 페이지 수정 </a>
     </div>
 TAG;
@@ -84,3 +113,5 @@ echo <<<CONTENTS
 CONTENTS;
 echo $board['bo_content_tail'];
 echo $write_btn;
+
+echo $history_list;

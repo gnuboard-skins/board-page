@@ -1,3 +1,36 @@
+function layer_popup(el){
+
+    const $el = $(el);		//레이어의 id를 $el 변수에 저장
+    const isDim = $el.prev().hasClass('dimBg');	//dimmed 레이어를 감지하기 위한 boolean 변수
+
+    isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+    const $elWidth = ~~($el.outerWidth()),
+        $elHeight = ~~($el.outerHeight()),
+        docWidth = $(document).width(),
+        docHeight = $(document).height();
+
+    // 화면의 중앙에 레이어를 띄운다.
+    if ($elHeight < docHeight || $elWidth < docWidth) {
+        $el.css({
+            marginTop: -$elHeight /2,
+            marginLeft: -$elWidth/2
+        })
+    } else {
+        $el.css({top: 0, left: 0});
+    }
+
+    $el.find('a.btn-layerClose').click(function(){
+        isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+        return false;
+    });
+
+    $('.layer .dimBg').click(function(){
+        $('.dim-layer').fadeOut();
+        return false;
+    });
+}
+
 $(function(){
 
     /**
@@ -37,5 +70,23 @@ $(function(){
         let last_line = $("<tr class='last-line'><td colspan='2000'></td></tr>");
         last_line.find("td").css("width", $(this).width()+"px");
         $(this).append(last_line);
+    });
+
+    /**
+     * 레이어팝업
+     */
+    $('.layer-popup').click(function(){
+        const $href = $(this).attr('href');
+        layer_popup($href);
+    });
+
+    /**
+     * 페이지 복구
+     */
+    $(".restore").click(function(){
+        if(confirm("정말로 이 버전의 페이지로 복구하시겠습니까?")) {
+            location.href=$(this).attr("href");
+        }
+        return false;
     });
 });

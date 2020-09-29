@@ -4,6 +4,89 @@
 
 /*
 ================================================================================
+    레이어 팝업 스타일
+================================================================================
+*/
+.pop-layer .pop-container {padding: 20px 25px;font-size:15px;}
+.pop-layer p.ctxt {color: #191919;line-height: 25px;}
+
+.pop-layer .btn-r {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding-top: 10px;
+    border-top: 1px solid #DDD;
+    text-align: right;
+}
+
+.pop-layer {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 510px;
+    height: auto;
+    background-color: #fff;
+    border: 5px solid #3571B5;
+    z-index: 10;
+}
+
+.dim-layer {
+    display: none;
+    position: fixed;
+    _position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.dim-layer .dimBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {display: block;}
+
+a.btn-layerClose {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #304a8a;
+    background-color: #3f5a9d;
+    font-size: 18px;
+    color: #fff;
+    line-height: 18px;
+}
+
+a.btn-layerClose:hover {
+    border: 1px solid #091940;
+    background-color: #1f326a;
+    color: #fff;
+}
+
+/*
+================================================================================
+    페이지 히스토리 팝업 스타일
+================================================================================
+*/
+#page-history .pop-container ul li {
+    padding-left:16px;
+    font-size:17px;
+    font-weight: 400;
+    color:#111111; margin-bottom: 10px;
+    background:no-repeat left .6em url("img/detail-page-bullet-type1.png")
+}
+#page-history .pop-container ul li a:hover { text-decoration: underline }
+#page-history .pop-container h2 { margin-bottom:20px }
+
+/*
+================================================================================
     페이지 버튼 디자인
 ================================================================================
 */
@@ -53,7 +136,7 @@
     페이지 컨텐츠 디자인 (공통)
 ================================================================================
 */
-.page-contents { font-size:18px; line-height: 1.6; min-height: 500px }
+.page-contents { font-size:18px; line-height: 1.6; min-height: 500px; padding-bottom: 50px }
 .page-contents p {margin:0;padding:0;word-break:break-all}
 
 
