@@ -11,7 +11,7 @@ add_javascript("<script src='{$board_skin_url}/ckfinder/ckfinder.js'></script>",
         <input type="hidden" name="w" value="<?php echo $w ?>">
         <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
         <input type="hidden" name="wr_id" value="<?php echo $wr_id ?>">
-        <input type="hidden" name="wr_subject" value="dummy subject">
+        <input type="hidden" name="wr_subject" value="<?php echo date("Y-m-d H:i:s")?> 작성">
         <input type="hidden" name="wr_content" value="">
         <?php if ($is_category) { ?>
             <input type="hidden" name="ca_name" value="<?php echo $sca?>">
