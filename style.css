@@ -118,8 +118,20 @@ a.btn-layerClose:hover {
     margin-right:-150px;
 }
 .view-page-buttons .buttons .btn:hover {background:#dfdfdf}
-.page-contents-buttons ul .btn.btn-submit {color:#fff;background:#4876ef;}
-.page-contents-buttons ul .btn.btn-submit:hover {background:#3a8afd;}
+
+.write-page-buttons { padding:20px 0; display:flex; justify-content: center }
+.write-page-buttons .btn {
+    font-size: 18px;
+    text-decoration: none;
+    width:200px;
+    height:3em;
+    padding:.6em 0;
+    display:block;
+    color:#191919;
+    background:#f9f9f9;
+}
+.write-page-buttons .btn.btn-submit {color:#fff;background:#4876ef;}
+.write-page-buttons .btn.btn-submit:hover {background:#3a8afd;}
 
 /*
 ================================================================================

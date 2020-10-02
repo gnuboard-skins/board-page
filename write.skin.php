@@ -17,7 +17,7 @@ add_javascript("<script src='{$board_skin_url}/ckfinder/ckfinder.js'></script>",
             <input type="hidden" name="ca_name" value="<?php echo $sca?>">
         <?php } ?>
         <div id="document-editor"><?php echo $view['wr_content']?></div>
-        <div class="page-contents-buttons">
+        <div class="write-page-buttons">
             <a href="<?php echo get_pretty_url($bo_table); ?>" class="btn">취소</a>
             <button type="submit" id="btn_submit" accesskey="s" class="btn btn-submit">작성완료</button>
         </div>
