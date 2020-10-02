@@ -59,7 +59,7 @@ if(isset($category_list)) {
     foreach($category_list as $ca) {
         $li_list.= " <li> <a href='{$ca['href']}' class='{$ca['active']}'>{$ca['name']}</a> </li> ";
     }
-    echo "<nav class='page-category scroll-fixed full-width' data-offset-top='0'><div class='wrap'><ul>{$li_list}</ul></div></nav>";
+    echo "<nav class='page-category scroll-fixed' data-offset-top='0'><ul>{$li_list}</ul></nav>";
 }
 
 /**
@@ -96,9 +96,11 @@ HISTORY;
 $write_btn = '';
 if ($write_href) {
     $write_btn = <<<TAG
-    <div class='page-contents-buttons right'>
-        <a href="#page-history" class="btn layer-popup"> <i class="fa fa-history" aria-hidden="true"></i> 버전관리 </a>
-        <a href="{$write_href}&sca={$sca}" class="btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 페이지 수정 </a>
+    <div class='view-page-buttons scroll-fixed'>
+        <div class="buttons">
+            <a href="#page-history" class="btn layer-popup" title="버전관리"><i class="fa fa-history" aria-hidden="true"></i> &nbsp;버전관리</a>
+            <a href="{$write_href}&sca={$sca}" class="btn" title="페이지 수정"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;페이지 수정</a>
+        </div>
     </div>
 TAG;
 }
@@ -106,12 +108,13 @@ TAG;
 /**
  * 컨텐츠 출력
  */
-echo $write_btn;
 echo $board['bo_content_head'];
 echo <<<CONTENTS
-<div id="page-contents" class="page-contents">{$v['wr_content']}</div>
+<div id="page-contents" class="page-contents">
+    {$write_btn}
+    {$v['wr_content']}
+</div>
 CONTENTS;
 echo $board['bo_content_tail'];
-echo $write_btn;
 
 echo $history_list;

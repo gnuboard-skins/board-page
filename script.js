@@ -54,6 +54,7 @@ $(function(){
      */
     $(".scroll-fixed").each(function(){
         let _this = $(this);
+        _this.css("width", _this.width()+"px");
         let fixed_top = _this.offset().top;
         $(window).scroll(function(event) {
             const scroll = $(window).scrollTop();
