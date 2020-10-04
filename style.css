@@ -142,7 +142,6 @@ a.btn-layerClose:hover {
 */
 .scroll-fixed.fixed {
     top: 0;
-    margin-left:-9px;
     position: fixed;
     z-index: 1;
 }
@@ -165,6 +164,7 @@ a.btn-layerClose:hover {
 .page-contents { position:relative; font-size:18px; line-height: 1.6; min-height: 500px; padding-bottom: 50px }
 .page-contents p {margin:0;padding:0;word-break:break-all}
 .page-contents a { text-decoration: underline; color:-webkit-link}
+.page-contents img { border-color:#ddd }
 
 .page-contents .full-width {
     position: absolute;
