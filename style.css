@@ -92,6 +92,15 @@ a.btn-layerClose:hover {
     페이지 버튼 디자인
 ================================================================================
 */
+.page-contents a.btn {
+    text-align: left;
+    margin-bottom:5px;
+    font-size: 17px;
+    text-decoration: none;
+    display:inline-block;
+    color:#191919;
+    background:#f9f9f9;
+}
 .view-page-buttons {
     position:relative;
 }
@@ -105,10 +114,6 @@ a.btn-layerClose:hover {
     top:50px;
 }
 .view-page-buttons .buttons .btn {
-    text-align: left;
-    margin-bottom:5px;
-    font-size: 17px;
-    text-decoration: none;
     width:35px; height:35px;
     overflow:hidden;
     display:block;
