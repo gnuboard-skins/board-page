@@ -106,6 +106,30 @@ TAG;
 }
 
 /**
+ * 컨텐츠가 없을 경우
+ */
+if(!$v['wr_content']) {
+    $v['wr_content'] = <<<NO_CONTENTS
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>페이지 게시판 생성을 환영합니다.</h2>
+<p>페이지 게시판은 그누보드의 게시판을 페이지 형태로 활용하기 위해 개발된 스킨입니다.</p>
+<p>게시판 하나가 하나의 페이지로 활용됩니다.</p>
+<p>분류를 설정하게 되면 하나의 게시판에서 여러개의 페이지를 작성할 수 있습니다.</p>
+<p>&nbsp;</p>
+<p>페이지를 변경하기 위해서는 오른쪽의 페이지 수정 버튼을 클릭 하거나</p>
+<p>아래 페이지 수정 버튼을 클릭하여 편집 하시면 됩니다.</p>
+<p>&nbsp;</p>
+<div class="buttons">
+    <a href="{$write_href}&sca={$sca}" class="btn" title="페이지 수정"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;페이지 수정</a>
+</div>
+<p>&nbsp;</p>
+<p>하나의 게시판에 여러개의 페이지를 운영 하려면</p>
+<p>게시판 관리자 페이지에서 카테고리를 설정 해 주시면 여러 페이지로 운영 가능합니다.</p>
+NO_CONTENTS;
+}
+
+/**
  * 컨텐츠 출력
  */
 echo $board['bo_content_head'];

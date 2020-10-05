@@ -26,7 +26,7 @@ add_javascript("<script src='{$board_skin_url}/ckfinder/ckfinder.js'></script>",
 
 <script>
     $(function(){
-        CKEDITOR.config.height = 900;
+        CKEDITOR.config.height = 600;
         CKEDITOR.config.width = 'auto';
         CKEDITOR.config.skin = 'office2013';
         CKEDITOR.config.extraPlugins = 'youtube';
