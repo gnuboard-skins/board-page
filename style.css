@@ -327,3 +327,12 @@ Headings
 .page-contents .box-contents-col3 .col .content2 { color:#353535; margin:0 36px 27px 36px }
 .page-contents .box-contents-col3 .col .content2 h3 { color:#191919; font-size: 23px; font-weight: bold; padding-top:27px; margin-bottom: 0; text-align: center }
 .page-contents .box-contents-col3 .col .content2 p { font-size:18px; padding-top:17px }
+
+.dropzone { margin:20px -20px; border:2px dotted #3a8afd; border-radius: 20px }
+.dropzone .dz-message .dz-button {
+    font-size:30px;
+    font-weight: 900;
+    color:rgba(0,0,0,0.1);
+}
+.dropzone .dz-image,
+.dropzone .dz-details { cursor:pointer }
