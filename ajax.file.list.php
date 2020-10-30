@@ -18,8 +18,14 @@ $result = sql_query("
 $list = [];
 while ($row = sql_fetch_array($result)) {
     $row['path'] = '/data/file/'.$bo_table.'/'.$row['bf_file'];
+    $row['image'] = true;
     if(is_file(G5_DATA_PATH.'/file/'.$bo_table.'/'.$row['bf_file'])) {
         $row['mime'] = mime_content_type(G5_DATA_PATH.'/file/'.$bo_table.'/'.$row['bf_file']);
+        if(strpos($row['mime'],'image') === false) {
+            $ext = pathinfo($row['name'],PATHINFO_EXTENSION);
+            $row['thumb'] = $board_skin_url.'/img/extensions/'.$ext.'.svg';
+            $row['image'] = false;
+        }
     }
     $list[] = $row;
 }

@@ -37,6 +37,7 @@ $dest_file = null;
 $success = false;
 $file_path = '';
 $bf_no = 0;
+$is_image = false;
 
 if (is_uploaded_file($tmp_file)) {
 
@@ -108,11 +109,17 @@ if (is_uploaded_file($tmp_file)) {
     sql_query($sql);
     $success = true;
     $file_path = '/data/file/'.$bo_table.'/'.$upload['file'];
+    $mime = mime_content_type(G5_DATA_PATH.'/file/'.$bo_table.'/'.$upload['file']);
+    if(strpos($mime,'image') !== false) {
+        $is_image = true;
+    }
 }
+
 
 header("Content-Type: application/json");
 echo json_encode([
     'success'=>$success,
     'bf_no'=>$bf_no,
+    'image'=>$is_image,
     'path'=> $file_path
 ]);

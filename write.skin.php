@@ -52,7 +52,11 @@ add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
             success: function (file, res) {
                 $(file.previewElement).attr("data-bf_no", res['bf_no']);
                 $(file.previewElement).find(".dz-details").click(function(){
-                    editor_instance.insertHtml(`<img src="${res['path']}" alt="${file['name']}"/>`);
+                    if(res['image']) {
+                        editor_instance.insertHtml(`<img src="${res['path']}" alt="${file['name']}"/>`);
+                    } else {
+                        editor_instance.insertHtml(`<a href="${res['path']}" target="_blank">${file['name']}</a>`);
+                    }
                 });
             },
             init: function() {
@@ -71,9 +75,13 @@ add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
                                     type: el['mime'],
                                     accepted: true            // required if using 'MaxFiles' option
                                 };
-                                const res = {'path':el['path'], 'bf_no':el['bf_no']};
+                                const res = {'path':el['path'], 'bf_no':el['bf_no'], 'image':el['image']};
                                 myDropzone.emit("addedfile", mockFile);
-                                myDropzone.emit("thumbnail", mockFile, el['path']);
+                                if(el['thumb']) {
+                                    myDropzone.emit("thumbnail", mockFile, el['thumb']);
+                                } else {
+                                    myDropzone.emit("thumbnail", mockFile, el['path']);
+                                }
                                 myDropzone.emit("success", mockFile, res);
                                 myDropzone.emit("complete", mockFile);
                                 myDropzone.files.push(mockFile);    // add to files array
