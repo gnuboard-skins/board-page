@@ -47,38 +47,54 @@ add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
             dictDefaultMessage: "<strong>여기에 파일을 놓거나 클릭하세요.</strong>",
             dictCancelUpload: "업로드 취소",
             dictRemoveFile: "<a href='#'>파일삭제</a>",
-            url: "<?php echo "{$board_skin_url}/ajax.file.upload.php?bo_table={$bo_table}"?>",
+            url: "<?php echo "{$board_skin_url}/ajax.file.upload.php?bo_table={$bo_table}&sca={$sca}"?>",
             addRemoveLinks: true,
             success: function (file, res) {
+                $(file.previewElement).attr("data-bf_no", res['bf_no']);
                 $(file.previewElement).find(".dz-details").click(function(){
-                    editor_instance.insertHtml(`<img src="${res['path']}"/>`);
+                    editor_instance.insertHtml(`<img src="${res['path']}" alt="${file['name']}"/>`);
                 });
             },
             init: function() {
-                /*
-                const mockFile = {
-                    name: 'FileName',
-                    size: '1000',
-                    type: 'image/gif',
-                    accepted: true            // required if using 'MaxFiles' option
-                };
-                this.files.push(mockFile);    // add to files array
-                this.emit("addedfile", mockFile);
-                this.emit("thumbnail", mockFile, 'http://www.bokdeokbang.com/__img__/top_logo.gif');
-                this.emit("complete", mockFile);
-                //*/
-            },
-            /*
-            addedfile: function(file) {
-                this.files.push(file);    // add to files array
-                this.emit("addedfile", file);
-                this.emit("thumbnail", file, 'http://www.bokdeokbang.com/__img__/top_logo.gif');
-                this.emit("complete", file);
-                //alert(file);
+
+                let myDropzone = this;
+
+                $.ajax({
+                    method:"post",
+                    url: "<?php echo "{$board_skin_url}/ajax.file.list.php?bo_table={$bo_table}&sca={$sca}"?>",
+                    success: function(data){
+                        if(data['count']>0) {
+                            data['list'].forEach(function(el){
+                                const mockFile = {
+                                    name: el['name'],
+                                    size: el['size'],
+                                    type: el['mime'],
+                                    accepted: true            // required if using 'MaxFiles' option
+                                };
+                                const res = {'path':el['path'], 'bf_no':el['bf_no']};
+                                myDropzone.emit("addedfile", mockFile);
+                                myDropzone.emit("thumbnail", mockFile, el['path']);
+                                myDropzone.emit("success", mockFile, res);
+                                myDropzone.emit("complete", mockFile);
+                                myDropzone.files.push(mockFile);    // add to files array
+                            });
+                        }
+                    }
+                });
             },
             removedfile: function (file) {
+                const bf_no = $(file.previewElement).data("bf_no");
+                $.ajax({
+                    method:"post",
+                    url: "<?php echo "{$board_skin_url}/ajax.file.delete.php?bo_table={$bo_table}&sca={$sca}"?>&bf_no="+bf_no,
+                    success: function(data){
+                        if(data['success']) {
+                            alert("파일삭제성공");
+                            $(file.previewElement).remove();
+                        }
+                    }
+                });
             }
-            //*/
         }
     });
 </script>

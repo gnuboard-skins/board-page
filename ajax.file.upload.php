@@ -1,11 +1,16 @@
 <?php
 include_once('../../../../../common.php');
 
-$bo_table = $_GET['bo_table'];
-
 // 디렉토리가 생성
 @mkdir(G5_DATA_PATH.'/file/'.$bo_table, G5_DIR_PERMISSION);
 @chmod(G5_DATA_PATH.'/file/'.$bo_table, G5_DIR_PERMISSION);
+
+$wr_id = -1;
+if($sca) {
+    foreach(explode('|',$board['bo_category_list']) as $idx=>$ca) {
+        if($sca==$ca) $wr_id = $idx;
+    }
+}
 
 $chars_array = array_merge(range(0,9), range('a','z'), range('A','Z'));
 
@@ -28,6 +33,10 @@ $filesize  = $_FILES['file']['size'];
 $filename  = $_FILES['file']['name'];
 $filename  = get_safe_filename($filename);
 $dest_file = null;
+
+$success = false;
+$file_path = '';
+$bf_no = 0;
 
 if (is_uploaded_file($tmp_file)) {
 
@@ -68,22 +77,21 @@ if (is_uploaded_file($tmp_file)) {
 
     // 올라간 파일의 퍼미션을 변경합니다.
     chmod($dest_file, G5_FILE_PERMISSION);
-}
 
-if (!get_magic_quotes_gpc()) {
-    $upload['source'] = addslashes($upload['source']);
-}
+    if (!get_magic_quotes_gpc()) {
+        $upload['source'] = addslashes($upload['source']);
+    }
 
-$row = sql_fetch("
+    $row = sql_fetch("
  select max(bf_no) as max_bf_no
  from {$g5['board_file_table']}
- where bo_table = '{$bo_table}' and wr_id = '-1'
+ where bo_table = '{$bo_table}' and wr_id = {$wr_id}
 ");
-$bf_no = (int)$row['max_bf_no']+1;
+    $bf_no = (int)$row['max_bf_no']+1;
 
-$sql = " insert into {$g5['board_file_table']}
+    $sql = " insert into {$g5['board_file_table']}
             set bo_table = '{$bo_table}',
-                 wr_id = '-1',
+                 wr_id = {$wr_id},
                  bf_no = '{$bf_no}',
                  bf_source = '{$upload['source']}',
                  bf_file = '{$upload['file']}',
@@ -97,9 +105,14 @@ $sql = " insert into {$g5['board_file_table']}
                  bf_height = '".(int)$upload['image'][1]."',
                  bf_type = '".(int)$upload['image'][2]."',
                  bf_datetime = '".G5_TIME_YMDHIS."' ";
-sql_query($sql);
+    sql_query($sql);
+    $success = true;
+    $file_path = '/data/file/'.$bo_table.'/'.$upload['file'];
+}
 
 header("Content-Type: application/json");
 echo json_encode([
-    'path'=> '/data/file/'.$bo_table.'/'.$upload['file']
+    'success'=>$success,
+    'bf_no'=>$bf_no,
+    'path'=> $file_path
 ]);
