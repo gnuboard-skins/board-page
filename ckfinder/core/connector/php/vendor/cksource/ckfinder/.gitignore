@@ -1,8 +1,0 @@
-.idea
-vendor
-dev/doc/output
-userfiles/
-config.php
-dev/lang/ckfinder-translations
-.php_cs.cache
-switch.php
