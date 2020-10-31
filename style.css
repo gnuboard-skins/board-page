@@ -329,6 +329,7 @@ Headings
 .page-contents .box-contents-col3 .col .content2 p { font-size:18px; padding-top:17px }
 
 .dropzone {
+    min-height: auto;
     margin:20px -20px; border:2px dotted #3a8afd; border-radius: 20px; padding:5px;
     display:flex; flex-wrap: wrap; justify-content: flex-start;
 }
