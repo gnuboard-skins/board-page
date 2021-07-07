@@ -42,11 +42,11 @@ $v = $list[0];
 /**
  * 최신글 기능 {{latest, bo_table, skin, rows, subject_len}}
  */
-preg_match_all('/{{([a-z,_0-9]+)}}/', $v['wr_content'], $matchs);
+preg_match_all('/{{([a-z,_0-9 ]+)}}/', $v['wr_content'], $matchs);
 foreach($matchs[1] as $idx=>$match) {
     list($func, $board_table, $skin, $rows, $subject_len) = explode(',',$match);
-    if($func=='latest') {
-        $latest = latest('theme/'.$skin, $board_table, $rows, $subject_len);
+    if(trim($func)=='latest') {
+        $latest = latest('theme/'.trim($skin), trim($board_table), trim($rows), trim($subject_len));
         $v['wr_content'] = str_replace($matchs[0][$idx], $latest, $v['wr_content']);
     }
 }
