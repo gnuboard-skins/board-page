@@ -345,3 +345,8 @@ Headings
 .dropzone .dz-image,
 .dropzone .dz-details { cursor:pointer }
 .dropzone .dz-image img { width:120px; height:120px; }
+
+.page-contents table.gs-table {border-collapse: collapse; border-top:2px solid rgb(105,151,206) }
+.page-contents table.gs-table th,
+.page-contents table.gs-table td { border:1px solid rgb(226,226,226); padding:15px }
+.page-contents table.gs-table th { background:rgb(245,245,247) }
