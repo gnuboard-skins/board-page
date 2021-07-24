@@ -1,7 +1,7 @@
 <?php if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 $view = sql_fetch(" SELECT * FROM {$write_table} WHERE `ca_name`='{$sca}' ORDER BY `wr_datetime` DESC LIMIT 1 ");
-add_javascript("<script src='{$board_skin_url}/ckeditor/ckeditor.js'></script>", 1);
+add_javascript("<script src='{$board_skin_url}/ckeditor4/ckeditor.js'></script>", 1);
 add_javascript('<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js" integrity="sha512-9WciDs0XP20sojTJ9E7mChDXy6pcO0qHpwbEJID1YVavz2H6QBz5eLoDD8lseZOb2yGT8xDNIV7HIe1ZbuiDWg==" crossorigin="anonymous"></script>', 2);
 add_stylesheet('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css" integrity="sha512-3g+prZHHfmnvE1HBLwUnVuunaPOob7dpksI7/v6UnF/rnKGwHf/GdEq9K7iEN7qTtW+S0iivTcGpeTBqqB04wA==" crossorigin="anonymous" />', 0);
 add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
@@ -19,6 +19,7 @@ add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
         <?php } ?>
         <div id="document-editor"><?php echo $view['wr_content']?></div>
         <div id="myDropzone" class="dropzone"></div>
+        <p>※ 파일을 클릭 하면 에디터에 삽입됩니다. </p>
         <div class="write-page-buttons">
             <a href="<?php echo get_pretty_url($bo_table); ?>" class="btn">취소</a>
             <button type="submit" id="btn_submit" accesskey="s" class="btn btn-submit">작성완료</button>
@@ -29,8 +30,8 @@ add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
 <script>
     $(function(){
         CKEDITOR.config.height = 600;
-        CKEDITOR.config.width = 'auto';
-        CKEDITOR.config.skin = 'office2013';
+        CKEDITOR.config.width = '100%';
+        CKEDITOR.config.skin = 'moono-lisa';
         CKEDITOR.config.extraPlugins = 'youtube';
         let editor_instance = CKEDITOR.replace( 'document-editor', {
             bodyId: 'page-contents',
@@ -44,7 +45,7 @@ add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
             return true;
         });
         Dropzone.options.myDropzone = {
-            dictDefaultMessage: "<strong>여기에 파일을 놓거나 클릭하세요.</strong>",
+            dictDefaultMessage: "<strong><i class=\"fa fa-plus-circle\"></i> 여기에 파일을 놓거나 클릭하세요.</strong>",
             dictCancelUpload: "업로드 취소",
             dictRemoveFile: "<a href='#'>파일삭제</a>",
             url: "<?php echo "{$board_skin_url}/ajax.file.upload.php?bo_table={$bo_table}&sca={$sca}"?>",

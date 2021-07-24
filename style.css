@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 /* 에디터 너비를 페이지와 맞추기 위해 좌우 20px 늘림 */
-#cke_document-editor { margin:0 -20px }
 #view-title { background:#eeeeee; border:1px solid #cccccc; padding:10px 20px }
 
 /*
@@ -330,17 +329,19 @@ Headings
 
 .dropzone {
     min-height: auto;
-    margin:20px -20px; border:2px dotted #3a8afd; border-radius: 20px; padding:5px;
+    background:#f8f8f8;
+    margin-bottom:10px; border:1px solid #d1d1d1; border-top:0; padding:5px;
     display:flex; flex-wrap: wrap; justify-content: flex-start;
+    width:calc(100% + 2px);
 }
 .dropzone .dz-message {
     width:100%;
     text-align: center;
 }
 .dropzone .dz-message .dz-button {
-    font-size:30px;
-    font-weight: 900;
-    color:rgba(0,0,0,0.1);
+    font-size:16px;
+    font-weight: 400;
+    color:#999;
 }
 .dropzone .dz-image,
 .dropzone .dz-details { cursor:pointer }
