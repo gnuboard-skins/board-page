@@ -345,9 +345,58 @@ Headings
 }
 .dropzone .dz-image,
 .dropzone .dz-details { cursor:pointer }
-.dropzone .dz-image img { width:120px; height:120px; }
+.dropzone .dz-image img { width:120px; height:120px; object-fit: cover }
+.dropzone .dz-preview.dz-image-preview {background: transparent;}
+.dropzone .dz-preview .dz-remove {
+    font-size: 16px;color:#fff;background:#f00;
+    border-radius: 20px;
+    width:28px; height:28px;
+    position:absolute;
+    right:0; top:0;
+    z-index: 100;
+    cursor: pointer;
+    display:flex; justify-content: center; align-items: center;
+}
+.dropzone .dz-preview .dz-remove:hover { text-decoration: none}
+.dropzone .dz-preview .dz-remove i {cursor: pointer;}
+.dropzone .dz-preview .dz-details .dz-size {margin-bottom: .5em;}
+.dropzone .dz-preview .dz-details .dz-filename {margin-bottom: .5em;}
+.dropzone .dz-details .dz-buttons { display: flex; justify-content: space-between; font-size: .8em; }
+.dropzone .dz-details .dz-buttons button { border:0; background: #4876ef; border-radius: 5px; color:#fff; padding:5px; cursor: pointer }
 
 .page-contents table.gs-table {border-collapse: collapse; border-top:2px solid rgb(105,151,206) }
 .page-contents table.gs-table th,
 .page-contents table.gs-table td { border:1px solid rgb(226,226,226); padding:15px }
 .page-contents table.gs-table th { background:rgb(245,245,247) }
+
+.page-contents .file-download {
+    width:300px;
+    display:flex;
+    justify-content: space-between;
+    border:1px solid #e0e0e0;
+    padding:15px;
+}
+.page-contents .file-download img {width:50px}
+.page-contents .file-download p {
+    width:170px;
+    display:flex;
+    flex-direction: column;
+    padding-left:10px;
+    font-size:.8em;
+    color:#8a8a8a;
+}
+.page-contents .file-download p a {
+    color:#0f74a8;
+    text-decoration: none;
+}
+.page-contents .file-download a.icon {
+    display:block;
+    width:50px; height:50px;
+    background:no-repeat 0 0 url("img/download.png");
+    text-decoration: none;
+    -webkit-transition: background-position ease-in-out 0.1s;
+    -moz-transition: background-position ease-in-out 0.1s;
+    -o-transition: background-position ease-in-out 0.1s;
+    transition: background-position ease-in-out 0.1s;
+}
+.page-contents .file-download a.icon:hover {background-position-y:-50px;}

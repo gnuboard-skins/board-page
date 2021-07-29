@@ -16,7 +16,7 @@ if(!$member['mb_no']) {
 $table = $g5['board_file_table'];
 
 $result = sql_query("
- select bf_source as name, bf_no, bf_filesize as size, bf_width as width, bf_height as height, bf_thumburl as thumb, bf_type
+ select bf_source as name, bf_no, bf_filesize as size, bf_width as width, bf_height as height, bf_fileurl as download, bf_thumburl as thumb, bf_type
  from {$table} where
                   `bo_table` = '{$bo_table}' and
                   (
@@ -28,6 +28,7 @@ $result = sql_query("
 $list = [];
 while ($row = sql_fetch_array($result)) {
     $row['path'] = $row['thumb'];
+    $row['size'] = number_format($row['size']);
     $row['image'] = true;
     if($row['bf_type']==0) {
         $row['image'] = false;

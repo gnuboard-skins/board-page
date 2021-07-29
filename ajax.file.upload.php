@@ -44,7 +44,7 @@ try {
                  bf_source = '{$file['name']}',
                  bf_file = '{$file['name']}',
                  bf_content = '',
-                 bf_fileurl = '{$file['src']}',
+                 bf_fileurl = '{$file['download']}',
                  bf_thumburl = '{$file['thumb']}',
                  bf_storage = '',
                  bf_download = '{$bf_download}',
