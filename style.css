@@ -168,7 +168,7 @@ a.btn-layerClose:hover {
 .page-contents { position:relative; font-size:18px; line-height: 1.6; min-height: 500px; padding-bottom: 50px }
 .page-contents p {margin:0;padding:0;word-break:break-all}
 .page-contents a { text-decoration: underline; color:-webkit-link}
-.page-contents img { max-width:100%; border-color:#ddd }
+.page-contents img { max-width:100%; border-color:rgb(226,226,226) }
 
 .page-contents .full-width {
     position: absolute;
@@ -238,9 +238,23 @@ a.btn-layerClose:hover {
 Headings
 -----------------------------------------------------------------------------
 */
-.page-contents h1 {font-size:40px; color:#191919; font-weight:700; margin-bottom:10px}
-.page-contents h2 {font-size:23px; color:#191919; font-weight:700; margin-bottom:20px}
-.page-contents h3 {font-size:20px; color:#191919; font-weight:700; margin-bottom:20px}
+.page-contents h1,
+.page-contents h2,
+.page-contents h3,
+.page-contents h4,
+.page-contents h5,
+.page-contents h6 {
+    color:#191919;
+    font-weight:700;
+    padding-left:10px;
+    border-left: 4px solid #4876f0;
+    border-bottom:1px solid #d3d5da;
+    padding-bottom:10px;
+    margin-bottom:25px
+}
+.page-contents h1 {font-size:40px; margin-bottom:25px}
+.page-contents h2 {font-size:23px; margin-bottom:15px}
+.page-contents h3 {font-size:20px; margin-bottom:10px}
 
 
 /*
