@@ -8,6 +8,15 @@ add_javascript("<script src='{$board_skin_url}/write.js'></script>", 20);
 add_stylesheet('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css" integrity="sha512-3g+prZHHfmnvE1HBLwUnVuunaPOob7dpksI7/v6UnF/rnKGwHf/GdEq9K7iEN7qTtW+S0iivTcGpeTBqqB04wA==" crossorigin="anonymous" />', 0);
 add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
 
+/**
+ * 게시판 여분필드 뽑아오기
+ */
+$bo = [];
+for($idx=1; $idx<=10; $idx++) {
+    $key = 'bo_'.$idx.'_subj';
+    if($board[$key]!='') $bo[$board[$key]] = $board['bo_'.$idx];
+}
+
 $upload_count = $board['bo_upload_count'];
 ?>
 <div class="wrap">
@@ -22,8 +31,8 @@ $upload_count = $board['bo_upload_count'];
             <input type="hidden" name="ca_name" value="<?php echo $sca?>">
         <?php } ?>
         <div id="document-editor"
-             data-css1="<?php echo G5_THEME_CSS_URL.'/default.css?ver='.date("YmdHis")?>"
-             data-css2="<?php echo $board_skin_url.'/style.css?ver='.date("YmdHis")?>"
+             data-css1="<?php echo $board_skin_url.'/style.css?ver='.date("YmdHis")?>"
+             data-css2="<?php echo $bo['custom-css']?$bo['custom-css'].'?ver='.date("YmdHis"):''?>"
         ><?php echo $view['wr_content']?></div>
         <div id="myDropzone" class="dropzone"
              data-max="<?php echo $upload_count?>"
