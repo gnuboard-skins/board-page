@@ -15,15 +15,17 @@ if(!$member['mb_no']) {
 }
 $response['msg'] = '';
 
+$wr_id = -1;
+if($sca) {
+    foreach(explode('|',$board['bo_category_list']) as $idx=>$ca) {
+        if($sca==$ca) $wr_id = $idx;
+    }
+}
+
 try {
     $ac = new AttachedCloud();
     $file = $ac->upload();
     if($file['name']) {
-        $bf_download = 0;
-        if(!$wr_id) {
-            $wr_id = -1;
-            $bf_download = $member['mb_no'];
-        }
 
         if($file['image-size'][2]==0) {
             $ext = pathinfo($file['name'],PATHINFO_EXTENSION);
@@ -31,9 +33,9 @@ try {
         }
 
         $row = sql_fetch("
- select max(bf_no) as max_bf_no
- from {$g5['board_file_table']}
- where bo_table = '{$bo_table}' and wr_id = {$wr_id}
+select max(bf_no) as max_bf_no
+from {$g5['board_file_table']}
+where bo_table = '{$bo_table}' and wr_id = {$wr_id}
 ");
         $bf_no = (int)$row['max_bf_no']+1;
 
@@ -47,7 +49,7 @@ try {
                  bf_fileurl = '{$file['download']}',
                  bf_thumburl = '{$file['thumb']}',
                  bf_storage = '',
-                 bf_download = '{$bf_download}',
+                 bf_download = '0',
                  bf_filesize = '".(int)$file['file-size']."',
                  bf_width = '".(int)$file['image-size'][0]."',
                  bf_height = '".(int)$file['image-size'][1]."',

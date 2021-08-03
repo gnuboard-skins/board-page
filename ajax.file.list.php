@@ -13,16 +13,18 @@ if(!$member['mb_no']) {
     exit;
 }
 
+$wr_id = -1;
+if($sca) {
+    foreach(explode('|',$board['bo_category_list']) as $idx=>$ca) {
+        if($sca==$ca) $wr_id = $idx;
+    }
+}
+
 $table = $g5['board_file_table'];
 
 $result = sql_query("
- select bf_source as name, bf_no, bf_filesize as size, bf_width as width, bf_height as height, bf_fileurl as download, bf_thumburl as thumb, bf_type
- from {$table} where
-                  `bo_table` = '{$bo_table}' and
-                  (
-                  `wr_id` = {$wr_id} or
-                  (`wr_id` = -1 and `bf_download` = {$member['mb_no']})
-                  )
+select bf_source as name, bf_file, bf_no, bf_filesize as size, bf_width as width, bf_height as height
+from {$table} where `bo_table` = '{$bo_table}' and `wr_id` = {$wr_id}
 ");
 
 $list = [];
