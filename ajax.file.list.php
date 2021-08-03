@@ -23,14 +23,14 @@ if($sca) {
 $table = $g5['board_file_table'];
 
 $result = sql_query("
-select bf_source as name, bf_file, bf_no, bf_filesize as size, bf_width as width, bf_height as height
+select bf_source as name, bf_thumburl as thumb, bf_file, bf_type, bf_no, bf_filesize as size, bf_width as width, bf_height as height
 from {$table} where `bo_table` = '{$bo_table}' and `wr_id` = {$wr_id}
 ");
 
 $list = [];
 while ($row = sql_fetch_array($result)) {
     $row['path'] = $row['thumb'];
-    $row['size'] = number_format($row['size']);
+    //$row['size'] = $row['size'];
     $row['image'] = true;
     if($row['bf_type']==0) {
         $row['image'] = false;
