@@ -1,3 +1,4 @@
+Dropzone.autoDiscover = false;
 $(function(){
     let editor = $("#document-editor");
     CKEDITOR.config.height = 600;
@@ -17,7 +18,7 @@ $(function(){
     });
 
     const dz = $("#myDropzone");
-    Dropzone.options.myDropzone = {
+    let myDropzone = new Dropzone("div#myDropzone", {
         dictDefaultMessage: "<strong><i class=\"fa fa-plus-circle\"></i> 여기에 파일을 놓거나 클릭하세요.</strong>",
         dictCancelUpload: "<i class=\"fa fa-times\" title='업로드취소'></i>",
         dictRemoveFile: "<i class=\"fa fa-trash\" title='파일삭제'></i>",
@@ -99,5 +100,5 @@ $(function(){
                 });
             }
         }
-    }
+    });
 });

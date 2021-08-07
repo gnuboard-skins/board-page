@@ -246,11 +246,10 @@ Headings
 .page-contents h6 {
     color:#191919;
     font-weight:700;
-    padding-left:10px;
+    padding:5px 0 10px 10px;
     border-left: 4px solid #4876f0;
     border-bottom:1px solid #d3d5da;
-    padding-bottom:10px;
-    margin-bottom:25px
+    margin-bottom:10px
 }
 .page-contents h1 {font-size:40px; margin-bottom:25px}
 .page-contents h2 {font-size:23px; margin-bottom:15px}

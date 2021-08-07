@@ -2,10 +2,10 @@
 
 $view = sql_fetch(" SELECT * FROM {$write_table} WHERE `ca_name`='{$sca}' ORDER BY `wr_datetime` DESC LIMIT 1 ");
 add_javascript("<script src='{$board_skin_url}/ckeditor4/ckeditor.js'></script>", 1);
-add_javascript('<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js" integrity="sha512-9WciDs0XP20sojTJ9E7mChDXy6pcO0qHpwbEJID1YVavz2H6QBz5eLoDD8lseZOb2yGT8xDNIV7HIe1ZbuiDWg==" crossorigin="anonymous"></script>', 2);
+add_javascript("<script src='{$board_skin_url}/dropzone-5.7.0/dist/min/dropzone.min.js'></script>", 2);
 add_javascript("<script src='{$board_skin_url}/write.js'></script>", 20);
 
-add_stylesheet('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css" integrity="sha512-3g+prZHHfmnvE1HBLwUnVuunaPOob7dpksI7/v6UnF/rnKGwHf/GdEq9K7iEN7qTtW+S0iivTcGpeTBqqB04wA==" crossorigin="anonymous" />', 0);
+add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/dropzone-5.7.0/dist/min/dropzone.min.css'/>", 0);
 add_stylesheet("<link rel='stylesheet' href='{$board_skin_url}/style.css'>", 1);
 
 /**
