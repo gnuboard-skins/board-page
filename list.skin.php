@@ -1,6 +1,14 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
+$bo = [];
+for($idx=1; $idx<=10; $idx++) {
+    $key = 'bo_'.$idx.'_subj';
+    if($board[$key]!='') {
+        $bo[$board[$key]] = $board['bo_'.$idx];
+    }
+}
+
 /**
  * css/js 추가
  */
@@ -9,6 +17,7 @@ add_javascript('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-visib
 add_javascript("<script src='{$board_skin_url}/script.js'></script>", 2);
 add_stylesheet('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />', 0);
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 1);
+if($bo['custom-css']) add_stylesheet("<link rel='stylesheet' href='{$bo['custom-css']}'>", 10);
 
 /**
  * 분류 설정

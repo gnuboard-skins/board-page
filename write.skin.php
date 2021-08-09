@@ -19,7 +19,7 @@ for($idx=1; $idx<=10; $idx++) {
 
 $upload_count = $board['bo_upload_count'];
 ?>
-<div class="wrap">
+<div id="gs-page" class="wrap">
     <form name="fwrite" id="write-page" action="<?php echo $action_url ?>" method="post" autocomplete="off">
         <input type="hidden" name="uid" value="<?php echo get_uniqid(); ?>">
         <input type="hidden" name="w" value="<?php echo $w ?>">
